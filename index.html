@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonsuz Emanetim 💙</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #020617;
+            --neon-blue: #38bdf8;
+            --deep-blue: #1e3a8a;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: var(--dark-bg);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* Arka Plan Görseli */
+        .bg-image {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.alphacoders.com/598/598634.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.25;
+            z-index: 1;
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, rgba(30, 58, 138, 0.2), rgba(2, 6, 23, 0.95));
+            z-index: 2;
+        }
+
+        /* Batman Logoları */
+        .bat-icon {
+            position: absolute;
+            width: 120px;
+            opacity: 0.15;
+            z-index: 3;
+            filter: drop-shadow(0 0 15px var(--neon-blue));
+        }
+        .left { left: 5%; bottom: 10%; transform: rotate(-10deg); }
+        .right { right: 5%; bottom: 10%; transform: rotate(10deg); }
+
+        /* Ana Kart */
+        .main-card {
+            position: relative;
+            z-index: 10;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            padding: 35px;
+            border-radius: 40px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            text-align: center;
+            max-width: 550px;
+            width: 85%;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: var(--neon-blue);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
+        }
+
+        .text-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding: 0 15px;
+            font-weight: 300;
+        }
+
+        .text-content b { color: var(--neon-blue); }
+
+        /* Mavi Yüzebilir Kalpler Efekti */
+        .blue-heart {
+            position: absolute;
+            bottom: -50px;
+            color: var(--neon-blue);
+            font-size: 20px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 5;
+            animation: swimUp linear infinite;
+            filter: drop-shadow(0 0 5px var(--neon-blue));
+            opacity: 0.7;
+        }
+
+        @keyframes swimUp {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            50% { transform: translateY(-50vh) translateX(25px) rotate(180deg); }
+            100% { transform: translateY(-110vh) translateX(-25px) rotate(360deg); opacity: 0; }
+        }
+
+        /* Geri Sayım Kutusu */
+        .countdown-box {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 15px;
+            border-radius: 20px;
+        }
+
+        .count-item span {
+            display: block;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--neon-blue);
+        }
+
+        .count-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Kaydırma çubuğu */
+        .text-content::-webkit-scrollbar { width: 4px; }
+        .text-content::-webkit-scrollbar-thumb { background: var(--neon-blue); border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="bg-image"></div>
+    <div class="overlay"></div>
+
+    <img src="https://www.pngall.com/wp-content/uploads/13/Batman-Logo-PNG-Pic.png" class="bat-icon left">
+    <img src="https://www.pngall.com/wp-content/uploads/13/Batman-Logo-PNG-Pic.png" class="bat-icon right">
+
+    <iframe src="https://www.youtube.com/embed/Z0oF8QeX2jQ?autoplay=1&loop=1&playlist=Z0oF8QeX2jQ" allow="autoplay" style="display:none"></iframe>
+
+    <div class="main-card">
+        <h1>Yeni Yılımız Kutlu Olsun 💙</h1>
+        
+        <div class="text-content">
+            Yeni bir yıla giriyoruz ve aklımda tek bir şey var o da sensin bebeğimmm aşkımmm balımmm karımmm birtanemmmm çiçeğimmm... <br><br>
+            Bu yıl bana ne yaşattıysa hepsini seninle yaşadım. Bazen güldük bazen sustuk bazen yorulduk ama ben hiçbir zaman senden vazgeçmedim. Çünkü sen benim için geçici bir mutluluk değil kalıcı bir his oldun. <br><br>
+            Canım yandığında bile seni sevdim, kafam karıştığında bile sana güvendim, herkes giderken bile senin kalacağını bildim. <br><br>
+            Yeni yılda senden mucize istemiyorum; sadece yine yanımda ol, yine bana bak, yine ben olayım sen ol. <br><br>
+            <b>Kalbim sana emanet, geleceğim sana emanet, ben sana emanetim.</b><br><br>
+            Mutlu yıllar bebeğimmm, iyi ki varsın iyi ki benimsin...
+        </div>
+
+        <div class="countdown-box">
+            <div class="count-item"><span id="days">00</span><div class="count-label">Gün</div></div>
+            <div class="count-item"><span id="hours">00</span><div class="count-label">Saat</div></div>
+            <div class="count-item"><span id="mins">00</span><div class="count-label">Dakika</div></div>
+            <div class="count-item"><span id="secs">00</span><div class="count-label">Saniye</div></div>
+        </div>
+    </div>
+
+    <script>
+        // Yüzen Mavi Kalpler Fonksiyonu
+        function createSwimmingHeart() {
+            const heart = document.createElement("div");
+            heart.className = "blue-heart";
+            heart.innerHTML = "💙";
+            
+            // Rastgele yatay pozisyon ve hız
+            heart.style.left = Math.random() * 100 + "vw";
+            const duration = Math.random() * 5 + 7; // 7-12 saniye arası yüzme süresi
+            heart.style.animationDuration = duration + "s";
+            heart.style.fontSize = (Math.random() * 15 + 10) + "px"; // Farklı boyutlar
+            
+            document.body.appendChild(heart);
+            
+            // Animasyon bitince temizle
+            setTimeout(() => { heart.remove(); }, duration * 1000);
+        }
+
+        // Sürekli kalp oluştur
+        setInterval(createSwimmingHeart, 300);
+
+        // Geri Sayım
+        const target = new Date("Jan 1, 2026 00:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const d = target - now;
+            document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerText = Math.floor((d % (1000 * 60)) / 1000);
+        }, 1000);
+    </script>
+</body>
+</html>
