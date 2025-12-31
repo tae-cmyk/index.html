@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seni Seviyorum Hayatımın Anlamı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #1a2a6c, #b21f1f, #fdbb2d); /* Gece mavisi ağırlıklı degrade */
+            background: linear-gradient(to bottom, #000428, #004e92); /* Derin mavi tema */
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Kar Taneleri */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: #fff;
+            user-select: none;
+            z-index: 1;
+            cursor: default;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(105vh); }
+        }
+
+        /* Ana Kart */
+        .container {
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #a1c4fd;
+            text-shadow: 0 0 10px rgba(161, 196, 253, 0.5);
+        }
+
+        .message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        /* Sayaç Alanı */
+        .countdown {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .countdown-item {
+            background: rgba(161, 196, 253, 0.2);
+            padding: 15px;
+            border-radius: 15px;
+            min-width: 70px;
+        }
+
+        .countdown-item span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .countdown-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            font-family: 'Dancing Script', cursive;
+            color: #a1c4fd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Yeni Yılımız Kutlu Olsun</h1>
+        
+        <div class="message">
+            "Balımmm, hayatımın anlamııı, kalbimin en güzel köşesinin tek sahibi sevgilim... Seninle geçen her saniye benim için dünyanın en kıymetli hazinesi. Bu yeni yıla girerken yanımda senin olduğunu bilmek, ruhuma en büyük huzuru veriyor. Senin o güzel gülüşünle aydınlanan her günüm, geleceğe dair kurduğum en tatlı hayallerimin merkezinde. Sen benim sadece sevgilim değil, sığındığım limanım, en yakın dostum ve her sabah uyanma sebebimsin. Yeni yılda da ellerimiz hiç ayrılmasın; birlikte daha çok gülelim, daha çok anı biriktirelim ve aşkımızı her gün bir kat daha büyüterek yaşayalım. Sen benim başıma gelen en güzel mucizesin, iyi ki varsın hayatımın anlamı..."
+        </div>
+
+        <div class="countdown" id="timer">
+            <div class="countdown-item">
+                <span id="days">00</span>
+                <div class="countdown-label">Gün</div>
+            </div>
+            <div class="countdown-item">
+                <span id="hours">00</span>
+                <div class="countdown-label">Saat</div>
+            </div>
+            <div class="countdown-item">
+                <span id="minutes">00</span>
+                <div class="countdown-label">Dakika</div>
+            </div>
+            <div class="countdown-item">
+                <span id="seconds">00</span>
+                <div class="countdown-label">Saniye</div>
+            </div>
+        </div>
+
+        <div class="footer">Seni her şeyden çok seviyorum... 💙</div>
+    </div>
+
+    <script>
+        // Kar Taneleri Oluşturma
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.innerHTML = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            
+            document.body.appendChild(snowflake);
+
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+        setInterval(createSnowflake, 100);
+
+        // Geri Sayım Sayacı (1 Ocak 2026'ya ayarlı)
+        const countdownDate = new Date("Jan 1, 2026 00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "MUTLU YILLAR AŞKIM!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
