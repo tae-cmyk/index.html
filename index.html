@@ -4,189 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İyi Ki Doğdun Koca Bebeğim!</title>
+    <link href="http://googleusercontent.com/fonts.googleapis.com/css2" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e3f2fd; 
-            color: #1a237e;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
+        body { 
+            margin: 0; 
+            padding: 0; 
+            /* Fontu uyguluyoruz: 'Cormorant Garamond' */
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 1.2rem;
+            /* Arka plan KOYU MAVİ */
+            background-color: #001a33; 
+            color: #dbeafe; /* Açık mavi metin rengi */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            overflow: hidden; /* Uçuşan objeler için */
         }
-
-        /* Şifre Ekranı */
-        #login-screen {
-            text-align: center;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        
+        /* Şifre Ekranı (Koyu tema) */
+        #login-screen { 
+            text-align: center; 
+            background: #002d5a; 
+            padding: 50px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
             z-index: 10;
         }
-
-        input {
-            padding: 12px;
-            width: 250px;
-            border: 2px solid #64b5f6;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            outline: none;
-            text-align: center;
-        }
-
-        button {
-            padding: 12px 30px;
-            background: #1e88e5;
+        #login-screen h2 { color: #f9d74c; font-weight: normal; } /* Sarı başlık */
+        
+        input { 
+            padding: 12px; 
+            width: 250px; 
+            border: 2px solid #64b5f6; 
+            background: #001a33;
             color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
+            border-radius: 10px; 
+            margin-bottom: 20px; 
+            text-align: center; 
+            font-family: 'Cormorant Garamond', serif;
         }
-
-        button:hover { background: #1565c0; transform: scale(1.05); }
+        
+        button { 
+            padding: 12px 30px; 
+            background: #f9d74c; /* Batman sarısı */
+            color: #1a237e; /* Koyu lacivert metin */
+            border: none; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: 0.3s;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        button:hover { background: #ffca28; transform: scale(1.05); }
 
         /* Ana İçerik */
-        #main-content {
-            display: none;
-            max-width: 800px;
-            width: 90%;
-            text-align: center;
-            padding: 40px 20px;
+        #main-content { 
+            display: none; 
+            max-width: 800px; 
+            width: 90%; 
+            text-align: center; 
+            padding: 40px 20px; 
+            opacity: 0; /* Animasyon için */
+            animation: fadeIn 1s forwards;
+            animation-delay: 0.5s;
         }
-
-        .header-img {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            margin-bottom: 30px;
-        }
-
-        .message-box {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            border-radius: 20px;
-            border-left: 10px solid #ffca28;
-            margin-bottom: 40px;
-            line-height: 1.8;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .photo-card {
-            background: white;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-        }
-
-        .photo-card:hover { transform: translateY(-5px); }
-
-        .photo-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-
-        .photo-card p {
-            font-size: 0.9rem;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
-        /* Spotify Player */
-        #spotify-player {
-            margin-top: 30px;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        @media (max-width: 600px) {
-            .photo-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-
-    <div id="login-screen">
-        <h2 style="color: #1e88e5;">Hoş Geldin En Değerlim ✨</h2>
-        <p>Devam etmek için o özel cümleyi yazar mısın?</p>
-        <input type="text" id="password" placeholder="Şifreniz...">
-        <br>
-        <button onclick="checkPassword()">Seni Seviyorum</button>
-    </div>
-
-    <div id="main-content">
-        <h1 style="color: #0d47a1; font-size: 2.5rem;">İyi Ki Doğdun Koca Bebeğim! 💙</h1>
-        
-        <img src="23857.jpg" alt="Evren Şeması" class="header-img">
-
-        <div class="message-box">
-            "Bak, tam <strong>1 Nisan</strong> günü evren senin için bu muazzam tabloyu çizmişti. Bu gördüğün yıldızlar ve toz bulutları, senin dünyaya geldiğin anın birer sessiz şahidi... Tıpkı o mavi laleler gibi eşsiz, sarı saçların gibi ışıl ışıl ve kalbin gibi derin bir manzara.<br><br>
-            Hayatıma girdiğin günden beri, tıpkı bu evren şeması gibi dünyamı renklendirdin. Mavinin en huzurlu tonu sensin benim için. Yeni yaşında tüm yolların lale bahçelerine çıksın, yüzündeki o güzel gülümseme hiç eksilmesin. İyi ki doğdun, iyi ki varsın ve iyi ki benim en değerlimsin. Seni çok seviyorum koca bebeğim!"
-            <div style="font-size: 2rem; margin-top: 15px;">🌷🌷🌷</div>
-        </div>
-
-        <div id="spotify-player">
-            <iframe id="spotify-iframe" src="" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-
-        <div class="photo-grid">
-            <div class="photo-card">
-                <img src="23200.jpg" alt="Küçüklük">
-                <p>"Koca bebeğim daha o zamandan belliymiş yıldız gibi parlayacağı."</p>
-            </div>
-            <div class="photo-card">
-                <img src="23682.jpg" alt="Kulaklık">
-                <p>"Seninle aynı dünyada, aynı şarkıyı dinlemek en sevdiğim şey."</p>
-            </div>
-            <div class="photo-card">
-                <img src="23196.jpg" alt="Öpücük">
-                <p>"Dünyanın en huzurlu yeri tam olarak burası."</p>
-            </div>
-            <div class="photo-card">
-                <img src="23193.jpg" alt="Gülüş">
-                <p>"Gülüşün her şeye değer, nice mutlu yaşlarımıza!"</p>
-            </div>
-        </div>
-
-        <p style="margin: 60px 0; color: #546e7a; font-weight: bold;">Her zaman yanındayım... 💙</p>
-    </div>
-
-    <script>
-        function checkPassword() {
-            var pass = document.getElementById("password").value.trim().toLowerCase();
-            if (pass === "seni çok seviyorum en değerlim") {
-                document.getElementById("login-screen").style.display = "none";
-                document.getElementById("main-content").style.display = "block";
-                document.body.style.backgroundColor = "#f0f7ff";
-                
-                // Spotify linkini şifreden sonra aktif et ve otomatik çalma dene (autoplay=1)
-                // Not: Spotify linkini 'embed' formatına çevirdim.
-                var spotifyLink = "https://open.spotify.com/embed/track/2Ssh4p1vO629X14TclQ50H?utm_source=generator&autoplay=1"; 
-                document.getElementById("spotify-iframe").src = spotifyLink;
-
-                window.scrollTo(0, 0);
-            } else {
-                alert("Şifre yanlış koca bebeğim, tekrar dener misin?");
-            }
-        }
-    </script>
-</body>
-</html>
-
-        
+        @keyframes fadeIn { to { opacity:
+            
