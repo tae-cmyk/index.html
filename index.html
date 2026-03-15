@@ -3,75 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İyi Ki Doğdun Koca Bebeğim!</title>
+    <title>Sana Özel Bir Mektup 💙 Batman</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
     <style>
-        body { 
-            margin: 0; padding: 0; 
-            font-family: 'Cormorant Garamond', serif; 
-            background-color: #001a33; 
-            color: #dbeafe; 
-            display: flex; justify-content: center; align-items: center; 
-            min-height: 100vh; overflow-x: hidden;
-        }
-        #login-screen { 
-            text-align: center; background: #002d5a; padding: 40px; 
-            border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); z-index: 10;
-        }
-        input { 
-            padding: 12px; width: 250px; border: 2px solid #f9d74c; 
-            background: #001a33; color: white; border-radius: 10px; 
-            margin-bottom: 20px; text-align: center; font-family: inherit;
-        }
-        button { 
-            padding: 12px 30px; background: #f9d74c; color: #001a33; 
-            border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: inherit;
-        }
-        #main-content { display: none; max-width: 800px; width: 90%; text-align: center; padding: 40px 20px; }
-        .header-img { width: 100%; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.7); }
-        .message-box { 
-            background: rgba(0, 45, 90, 0.8); padding: 30px; border-radius: 20px; 
-            border-left: 8px solid #f9d74c; margin-bottom: 40px; line-height: 1.6; font-size: 1.3rem;
-        }
-        .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .photo-card { background: rgba(0, 45, 90, 0.9); padding: 10px; border-radius: 15px; }
-        .photo-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; }
+        body { margin: 0; padding: 0; font-family: 'Cormorant Garamond', serif; background-color: #001a33; color: #dbeafe; overflow-x: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        #login-screen { text-align: center; background: #002d5a; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40 (0,0,0,0.5); z-index: 100; }
+        #login-screen h2 { color: #f9d74c; margin-top: 0; }
+        input { padding: 12px; width: 250px; border: 2px solid #f9d74c; background: #001a33; color: white; border-radius: 10px; margin-bottom: 20px; text-align: center; font-family: inherit; }
+        button { padding: 12px 30px; background: #f9d74c; color: #001a33; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: inherit; }
+        #main-content { display: none; opacity: 0; animation: fadeIn 1s forwards; width: 100%; max-width: 1000px; padding: 40px 20px; box-sizing: border-box; }
+        @keyframes fadeIn { to { opacity: 1; } }
+        .envelope-container { background-color: #fffaf0; color: #333; padding: 50px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 2px solid #d4af37; position: relative; display: flex; flex-direction: column; align-items: center; }
+        h1 { font-size: 2.8rem; color: #001a33; font-weight: normal; margin-top: 0; margin-bottom: 30px; text-align: center; }
+        .letter-body { display: flex; gap: 40px; align-items: flex-start; width: 100%; margin-bottom: 40px; }
+        .text-container { flex: 1; line-height: 1.8; font-size: 1.3rem; text-indent: 20px; text-align: justify; }
+        .side-photos { width: 300px; display: flex; flex-direction: column; gap: 20px; }
+        .side-photo-card { background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        .side-photo-card img { width: 100%; border-radius: 8px; }
+        .side-photo-card p { font-size: 1.1rem; font-style: italic; color: #555; margin: 10px 0 0 0; }
+        .bottom-area { text-align: center; width: 100%; border-top: 2px solid #ddd; padding-top: 30px; margin-top: 10px; }
+        .v-photo { width: 300px; background: white; padding: 8px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); display: inline-block; margin-bottom: 20px; }
+        .v-photo img { width: 100%; border-radius: 8px; }
+        .gallery-tab { text-align: center; margin-top: 30px; }
+        .gallery-btn { padding: 10px 20px; background: #001a33; color: #f9d74c; border: 2px solid #f9d74c; border-radius: 30px; cursor: pointer; font-family: inherit; font-size: 1.2rem; }
+        #gallery-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 200; justify-content: center; align-items: center; cursor: pointer; }
+        #gallery-modal img { max-width: 90%; max-height: 90%; border-radius: 10px; border: 4px solid #f9d74c; }
         .flyer { position: fixed; top: -50px; z-index: 1; pointer-events: none; animation: flyDown 8s linear infinite; }
-        @keyframes flyDown {
-            0% { transform: translateY(0vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
-        }
-        @media (max-width: 600px) { .photo-grid { grid-template-columns: 1fr; } }
+        @keyframes flyDown { 0% { transform: translateY(0vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
+        @media (max-width: 800px) { .letter-body { flex-direction: column; } .side-photos { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; } .side-photo-card { width: 45%; } }
     </style>
 </head>
 <body>
     <div id="flyers-container"></div>
 
     <div id="login-screen">
-        <h2 style="color: #f9d74c;">Hoş Geldin En Değerlim ✨</h2>
+        <h2>Sana Özel Bir Sürpriz... ✨</h2>
         <input type="text" id="password" placeholder="Şifreyi buraya yaz...">
         <br>
-        <button onclick="checkPassword()">Giriş Yap</button>
+        <button onclick="checkPassword()">Mektubu Oku</button>
     </div>
 
     <div id="main-content">
-        <h1 style="color: #f9d74c;">İyi Ki Doğdun Koca Bebeğim! 💙</h1>
-        <img src="april-1-2019-eagle-nebula-pillars.jpg" class="header-img">
-        
-        <div class="message-box">
-            "Bak, tam 1 Nisan günü evren senin için bu muazzam tabloyu çizmişti. Bu gördüğün yıldızlar ve toz bulutları, senin dünyaya geldiğin anın birer sessiz şahidi... Tıpkı o mavi laleler gibi eşsiz, sarı saçların gibi ışıl ışıl ve kalbin gibi derin bir manzara. Hayatıma girdiğin günden beri dünyamı renklendirdin. Seni çok seviyorum koca bebeğim!"
-            <p>🌷 🦇 💙</p>
-        </div>
+        <div class="envelope-container">
+            <h1>İyi Ki Doğdun Koca Bebeğim 💙</h1>
+            
+            <div class="letter-body">
+                <div class="text-container">
+                    <p>"Bak sevgilim, tam <strong>1 Nisan</strong> günü sen bu dünyaya gözlerini açtığında, evren senin için o muazzam tabloyu çoktan çizmişti... O gün gökyüzünde parlayan yıldızlar, yıllar sonra hayatımın en parlak ışığı olacağının habercisi gibiydi. Seninle geçen her an, benim için o sonsuz evrenin içinde kaybolmak ama her seferinde yolumu senin kalbinde bulmak gibi."</p>
+                    <p>"Geleceğe baktığımda sadece bizi görüyorum; el ele yürüdüğümüz yolları, birlikte kuracağımız o sıcacık yuvayı ve Batman gibi her zorluğa karşı birbirimizin kahramanı olduğumuz o güzel günleri... Senin gülüşün benim sığınağım, varlığın ise en büyük şükür sebebim. Yıllar geçse de, saçlarımıza aklar düşse de ben hep o ilk günkü heyecanla, 'iyi ki benimlesin' diyeceğim. Seninle yaşlanmak değil, seninle her gün yeniden doğmak istiyorum."</p>
+                    <p>"Yeni yaşında, hayal ettiğin her şeyin gerçeğe dönüştüğü, her sabahına benimle uyandığın ve huzurun hiç eksilmediği bir ömür diliyorum. Sen benim bu dünyadaki en kıymetli hazinemsin. İyi ki doğdun, iyi ki varsın ve iyi ki tamamen benimsin. Seni her şeyden çok seviyorum koca bebeğim!"</p>
+                </div>
+                
+                <div class="side-photos">
+                    <div class="side-photo-card"><img src="IMG_0279.JPG"><p>Koca bebeğim...</p></div>
+                    <div class="side-photo-card"><img src="IMG-20260313-WA0061.jpg"><p>En güzel anımız.</p></div>
+                    <div class="side-photo-card"><img src="IMG_1333.JPG"><p>Huzur...</p></div>
+                </div>
+            </div>
 
-        <div class="photo-grid">
-            <div class="photo-card"><img src="IMG_0279.JPG"><p>Koca bebeğim...</p></div>
-            <div class="photo-card"><img src="IMG-20260313-WA0061.jpg"><p>En güzel anımız.</p></div>
-            <div class="photo-card"><img src="IMG_1333.JPG"><p>Huzur...</p></div>
-            <div class="photo-card"><img src="IMG_0669 2.JPG"><p>Gülüşün her şeye değer!</p></div>
+            <div class="bottom-area">
+                <div class="v-photo"><img src="IMG_0669 2.JPG"><p>Gülüşün her şeye değer!</p></div>
+                <p style="color: #001a33; font-weight: bold; font-size: 1.4rem;">Geleceğimiz için, daima... 💙🦇🌷</p>
+                
+                <div class="gallery-tab">
+                    <p>Doğduğun gün evrenin sana hediyesini görmek ister misin?</p>
+                    <button class="gallery-btn" onclick="openGallery()">Hemen Göster!</button>
+                </div>
+            </div>
         </div>
-        
-        <p style="margin: 60px 0; color: #f9d74c; font-weight: bold; font-size: 1.4rem;">Her zaman yanındayım... 💙🦇</p>
+    </div>
+
+    <div id="gallery-modal" onclick="closeGallery()">
+        <img src="april-1-2019-eagle-nebula-pillars.jpg">
     </div>
 
     <script>
@@ -81,25 +84,25 @@
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("main-content").style.display = "block";
                 startFlyers();
-            } else { alert("Şifre yanlış!"); }
+            } else { alert("Şifre yanlış koca bebeğim!"); }
         }
-
+        function openGallery() { document.getElementById('gallery-modal').style.display = 'flex'; }
+        function closeGallery() { document.getElementById('gallery-modal').style.display = 'none'; }
         function startFlyers() {
             const container = document.getElementById('flyers-container');
             const icons = ['🦇', '💙', '🌷', '❤️'];
-            for (let i = 0; i < 40; i++) {
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
                     const f = document.createElement('div');
                     f.className = 'flyer';
                     f.innerText = icons[Math.floor(Math.random() * icons.length)];
                     f.style.left = Math.random() * 100 + 'vw';
                     f.style.fontSize = (Math.random() * 20 + 20) + 'px';
-                    f.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                    f.style.animationDuration = (Math.random() * 3 + 6) + 's';
                     container.appendChild(f);
-                }, i * 200);
+                }, i * 180);
             }
         }
     </script>
 </body>
 </html>
-
