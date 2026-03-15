@@ -4,247 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>İyi Ki Doğdun Koca Bebeğim!</title>
-    <link href="http://googleusercontent.com/fonts.googleapis.com/css2" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
     <style>
         body { 
-            margin: 0; 
-            padding: 0; 
-            /* Fontu uyguluyoruz: 'Cormorant Garamond' */
+            margin: 0; padding: 0; 
             font-family: 'Cormorant Garamond', serif; 
-            font-size: 1.2rem;
-            /* Arka plan KOYU MAVİ */
             background-color: #001a33; 
-            color: #dbeafe; /* Açık mavi metin rengi */
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            overflow: hidden; /* Uçuşan objeler için */
+            color: #dbeafe; 
+            display: flex; justify-content: center; align-items: center; 
+            min-height: 100vh; overflow-x: hidden;
         }
-        
-        /* Şifre Ekranı (Koyu tema) */
         #login-screen { 
-            text-align: center; 
-            background: #002d5a; 
-            padding: 50px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5); 
-            z-index: 10;
+            text-align: center; background: #002d5a; padding: 40px; 
+            border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); z-index: 10;
         }
-        #login-screen h2 { color: #f9d74c; font-weight: normal; } /* Sarı başlık */
-        
         input { 
-            padding: 12px; 
-            width: 250px; 
-            border: 2px solid #64b5f6; 
-            background: #001a33;
-            color: white;
-            border-radius: 10px; 
-            margin-bottom: 20px; 
-            text-align: center; 
-            font-family: 'Cormorant Garamond', serif;
+            padding: 12px; width: 250px; border: 2px solid #f9d74c; 
+            background: #001a33; color: white; border-radius: 10px; 
+            margin-bottom: 20px; text-align: center; font-family: inherit;
         }
-        
         button { 
-            padding: 12px 30px; 
-            background: #f9d74c; /* Batman sarısı */
-            color: #1a237e; /* Koyu lacivert metin */
-            border: none; 
-            border-radius: 10px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            transition: 0.3s;
-            font-family: 'Cormorant Garamond', serif;
+            padding: 12px 30px; background: #f9d74c; color: #001a33; 
+            border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: inherit;
         }
-        button:hover { background: #ffca28; transform: scale(1.05); }
-
-        /* Ana İçerik */
-        #main-content { 
-            display: none; 
-            max-width: 800px; 
-            width: 90%; 
-            text-align: center; 
-            padding: 40px 20px; 
-            opacity: 0; /* Animasyon için */
-            animation: fadeIn 1s forwards;
-            animation-delay: 0.5s;
-        }
-        @keyframes fadeIn { to { opacity: 1; } }
-
-        h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: #ffca28; font-weight: normal; }
-
-        .header-img { 
-            width: 100%; 
-            border-radius: 15px; 
-            box-shadow: 0 5px 25px rgba(0,0,0,0.7); 
-            margin-bottom: 30px; 
-        }
-
+        #main-content { display: none; max-width: 800px; width: 90%; text-align: center; padding: 40px 20px; }
+        .header-img { width: 100%; border-radius: 15px; margin-bottom: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.7); }
         .message-box { 
-            background: rgba(0, 45, 90, 0.8); /* Şeffaf koyu mavi */
-            padding: 40px; 
-            border-radius: 20px; 
-            border-left: 10px solid #ffca28; /* Batman sarısı detay */
-            margin-bottom: 40px; 
-            line-height: 1.8; 
-            font-size: 1.3rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            background: rgba(0, 45, 90, 0.8); padding: 30px; border-radius: 20px; 
+            border-left: 8px solid #f9d74c; margin-bottom: 40px; line-height: 1.6; font-size: 1.3rem;
         }
-
-        .photo-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 25px; 
-        }
-
-        .photo-card { 
-            background: rgba(0, 45, 90, 0.9); 
-            padding: 15px; 
-            border-radius: 15px; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); 
-        }
-        .photo-card img { 
-            width: 100%; 
-            height: 250px; 
-            object-fit: cover; 
-            border-radius: 10px; 
-        }
-        .photo-card p { font-size: 1.1rem; font-style: italic; color: #d1d5db; }
-
-        /* Uçuşan Objeler İçin CSS */
-        .flyer {
-            position: fixed;
-            top: -50px; /* Sayfanın tepesinden başla */
-            z-index: 1;
-            opacity: 0.7;
-            animation: flyDown 10s linear infinite;
-        }
-        
-        /* Batman Logosu (Sarı-Siyah) */
-        .batman-logo {
-            width: 30px; height: 30px;
-            background-color: #f9d74c; /* Sarı */
-            -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 133.5C492.2 122.9 467.2 104.7 433.2 86C399.1 67.2 355.2 48 304 48c-49.8 0-92.4 18.2-126.1 36.6L160 92.5V80h-16v12.5L126.1 84.6C92.4 66.2 49.8 48 0 48v36.6C49.8 84.6 92.4 102.8 126.1 121.2C159.7 139.6 182.2 153.2 182.2 153.2C182.2 153.2 159.7 166.8 126.1 185.2C92.4 203.6 49.8 221.8 0 221.8V256.4c49.8 0 92.4-18.2 126.1-36.6L144 207.5V220h16v-12.5L177.9 219.8C211.6 238.2 254.2 256.4 304 256.4c51.2 0 95.1-19.2 129.2-38s63.1-41.2 74.8-51.8l-1.6-1.6s-10.7 9.8-38.4 24.8c-27.7 15-62.1 31.2-104 31.2c-49.8 0-92.4-18.2-126.1-36.6L160 171.5V184h-16v-12.5L126.1 178.6C92.4 197 49.8 215.2 0 215.2V250h36.6C86.4 250 129 231.8 162.7 213.4C196.3 195 218.8 181.4 218.8 181.4s22.5 13.6 56.1 32c33.7 18.4 76.3 36.6 126.1 36.6h36.6V215.2c-49.8 0-92.4-18.2-126.1-36.6L304 167.5V180h16v-12.5L337.9 179.8C371.6 198.2 414.2 216.4 464 216.4c1.1 0 2.2 0 3.3-.1 51.2-1 95.1-19.2 129.2-38 34.1-18.8 63.1-41.2 74.8-51.8L504 133.5zM384.8 153.2C384.8 153.2 362.3 166.8 328.7 185.2C295 203.6 252.4 221.8 202.6 221.8V256.4c49.8 0 92.4-18.2 126.1-36.6L344 207.5V220h16v-12.5L377.9 219.8C411.6 238.2 454.2 256.4 504 256.4v-36.6C454.2 219.8 411.6 201.6 377.9 183.2C344.2 164.8 321.7 153.2 321.7 153.2c0 0 22.5-13.6 56.1-32c33.7-18.4 76.3-36.6 126.1-36.6H504V48c-1.1 0-2.2 0-3.3.1c-51.2 1-95.1 19.2-129.2 38c-34.1 18.8-63.1 41.2-74.8 51.8l1.6 1.6z"/></svg>') no-repeat center;
-            -webkit-mask-size: contain;
-            mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 133.5C492.2 122.9 467.2 104.7 433.2 86C399.1 67.2 355.2 48 304 48c-49.8 0-92.4 18.2-126.1 36.6L160 92.5V80h-16v12.5L126.1 84.6C92.4 66.2 49.8 48 0 48v36.6C49.8 84.6 92.4 102.8 126.1 121.2C159.7 139.6 182.2 153.2 182.2 153.2C182.2 153.2 159.7 166.8 126.1 185.2C92.4 203.6 49.8 221.8 0 221.8V256.4c49.8 0 92.4-18.2 126.1-36.6L144 207.5V220h16v-12.5L177.9 219.8C211.6 238.2 254.2 256.4 304 256.4c51.2 0 95.1-19.2 129.2-38s63.1-41.2 74.8-51.8l-1.6-1.6s-10.7 9.8-38.4 24.8c-27.7 15-62.1 31.2-104 31.2c-49.8 0-92.4-18.2-126.1-36.6L160 171.5V184h-16v-12.5L126.1 178.6C92.4 197 49.8 215.2 0 215.2V250h36.6C86.4 250 129 231.8 162.7 213.4C196.3 195 218.8 181.4 218.8 181.4s22.5 13.6 56.1 32c33.7 18.4 76.3 36.6 126.1 36.6h36.6V215.2c-49.8 0-92.4-18.2-126.1-36.6L304 167.5V180h16v-12.5L337.9 179.8C371.6 198.2 414.2 216.4 464 216.4c1.1 0 2.2 0 3.3-.1 51.2-1 95.1-19.2 129.2-38 34.1-18.8 63.1-41.2 74.8-51.8l4 4zM384.8 153.2C384.8 153.2 362.3 166.8 328.7 185.2C295 203.6 252.4 221.8 202.6 221.8V256.4c49.8 0 92.4-18.2 126.1-36.6L344 207.5V220h16v-12.5L377.9 219.8C411.6 238.2 454.2 256.4 504 256.4v-36.6C454.2 219.8 411.6 201.6 377.9 183.2C344.2 164.8 321.7 153.2 321.7 153.2c0 0 22.5-13.6 56.1-32c33.7-18.4 76.3-36.6 126.1-36.6H504V48c-1.1 0-2.2 0-3.3.1c-51.2 1-95.1 19.2-129.2 38c-34.1 18.8-63.1 41.2-74.8 51.8l1.6 1.6z"/></svg>') no-repeat center;
-            mask-size: contain;
-            margin: 5px;
-        }
-        
-        /* Kalpler (Kırmızı) */
-        .heart {
-            font-size: 25px;
-            color: #ff4d4d;
-        }
-        
-        /* Laleler (Mavi) */
-        .tulip {
-            font-size: 25px;
-            color: #64b5f6;
-        }
-
-        /* Uçuş Animasyonu */
+        .photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .photo-card { background: rgba(0, 45, 90, 0.9); padding: 10px; border-radius: 15px; }
+        .photo-card img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; }
+        .flyer { position: fixed; top: -50px; z-index: 1; pointer-events: none; animation: flyDown 8s linear infinite; }
         @keyframes flyDown {
-            0% { transform: translateY(0vh) rotate(0deg) translateX(0px); opacity: 0; }
-            10% { opacity: 0.7; }
-            100% { transform: translateY(110vh) rotate(360deg) translateX(50px); opacity: 0; }
+            0% { transform: translateY(0vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
         }
-
         @media (max-width: 600px) { .photo-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <div id="flyers-container"></div>
 
     <div id="login-screen">
-        <h2>Hoş Geldin En Değerlim ✨</h2>
-        <input type="text" id="password" placeholder="Şifreniz...">
+        <h2 style="color: #f9d74c;">Hoş Geldin En Değerlim ✨</h2>
+        <input type="text" id="password" placeholder="Şifreyi buraya yaz...">
         <br>
-        <button onclick="checkPassword()">Seni Seviyorum</button>
+        <button onclick="checkPassword()">Giriş Yap</button>
     </div>
 
     <div id="main-content">
-        <h1>İyi Ki Doğdun Koca Bebeğim! 💙</h1>
-        
+        <h1 style="color: #f9d74c;">İyi Ki Doğdun Koca Bebeğim! 💙</h1>
         <img src="april-1-2019-eagle-nebula-pillars.jpg" class="header-img">
-
+        
         <div class="message-box">
-            "Bak, tam <strong>1 Nisan</strong> günü evren senin için bu muazzam tabloyu çizmişti. Bu gördüğün yıldızlar ve toz bulutları, senin dünyaya geldiğin anın birer sessiz şahidi... Tıpkı o mavi laleler gibi eşsiz, sarı saçların gibi ışıl ışıl ve kalbin gibi derin bir manzara.<br><br>
-            Hayatıma girdiğin günden beri, tıpkı bu evren şeması gibi dünyamı renklendirdin. Mavinin en huzurlu tonu sensin benim için. Yeni yaşında tüm yolların lale bahçelerine çıksın, yüzündeki o güzel gülümseme hiç eksilmesin. İyi ki doğdun, iyi ki varsın ve iyi ki benim en değerlimsin. Seni çok seviyorum koca bebeğim!"
-            <div style="font-size: 2rem; margin-top: 15px;">🌷🌷🌷</div>
+            "Bak, tam 1 Nisan günü evren senin için bu muazzam tabloyu çizmişti. Bu gördüğün yıldızlar ve toz bulutları, senin dünyaya geldiğin anın birer sessiz şahidi... Tıpkı o mavi laleler gibi eşsiz, sarı saçların gibi ışıl ışıl ve kalbin gibi derin bir manzara. Hayatıma girdiğin günden beri dünyamı renklendirdin. Seni çok seviyorum koca bebeğim!"
+            <p>🌷 🦇 💙</p>
         </div>
 
         <div class="photo-grid">
-            <div class="photo-card">
-                <img src="IMG_0279.JPG">
-                <p>"Koca bebeğim daha o zamandan belliymiş yıldız gibi parlayacağı."</p>
-            </div>
-            <div class="photo-card">
-                <img src="IMG-20260312-WA0061.jpg">
-                <p>"Seninle aynı dünyada, aynı şarkıyı dinlemek en sevdiğim şey."</p>
-            </div>
-            <div class="photo-card">
-                <img src="IMG_1333.JPG">
-                <p>"Dünyanın en huzurlu yeri tam olarak burası."</p>
-            </div>
-            <div class="photo-card">
-                <img src="IMG_0669 2.JPG">
-                <p>"Gülüşün her şeye değer!"</p>
-            </div>
+            <div class="photo-card"><img src="IMG_0279.JPG"><p>Koca bebeğim...</p></div>
+            <div class="photo-card"><img src="IMG-20260313-WA0061.jpg"><p>En güzel anımız.</p></div>
+            <div class="photo-card"><img src="IMG_1333.JPG"><p>Huzur...</p></div>
+            <div class="photo-card"><img src="IMG_0669 2.JPG"><p>Gülüşün her şeye değer!</p></div>
         </div>
         
-        <p style="margin: 60px 0; color: #ffca28; font-weight: bold; font-size: 1.4rem;">Her zaman yanındayım... 💙🦇</p>
+        <p style="margin: 60px 0; color: #f9d74c; font-weight: bold; font-size: 1.4rem;">Her zaman yanındayım... 💙🦇</p>
     </div>
 
     <script>
-        // Şifre kontrol fonksiyonu
         function checkPassword() {
             var pass = document.getElementById("password").value.trim().toLowerCase();
             if (pass === "seni çok seviyorum en değerlim") {
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("main-content").style.display = "block";
-                
-                // Arka plan animasyonunu başlat
                 startFlyers();
-                
-                window.scrollTo(0, 0);
-            } else {
-                alert("Şifre yanlış koca bebeğim, tekrar dener misin? 🦇");
-            }
+            } else { alert("Şifre yanlış!"); }
         }
 
-        // Uçuşan objeleri oluşturma fonksiyonu
         function startFlyers() {
             const container = document.getElementById('flyers-container');
-            const types = ['batman', 'heart', 'tulip'];
-            
-            for (let i = 0; i < 50; i++) { // Toplam obje sayısı
-                const flyer = document.createElement('div');
-                flyer.classList.add('flyer');
-                
-                // Rastgele tip seçimi
-                const type = types[Math.floor(Math.random() * types.length)];
-                
-                if (type === 'batman') {
-                    flyer.classList.add('batman-logo');
-                } else if (type === 'heart') {
-                    flyer.classList.add('heart');
-                    flyer.innerText = '♥';
-                } else if (type === 'tulip') {
-                    flyer.classList.add('tulip');
-                    flyer.innerText = '🌷';
-                }
-                
-                // Rastgele pozisyon ve animasyon süresi
-                flyer.style.left = Math.random() * 100 + 'vw';
-                flyer.style.animationDuration = Math.random() * 5 + 7 + 's'; // 7-12 saniye arası
-                flyer.style.animationDelay = Math.random() * 5 + 's'; // Rastgele başlama zamanı
-                flyer.style.fontSize = Math.random() * 10 + 20 + 'px'; // 20-30px arası boyut
-                
-                container.appendChild(flyer);
+            const icons = ['🦇', '💙', '🌷', '❤️'];
+            for (let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const f = document.createElement('div');
+                    f.className = 'flyer';
+                    f.innerText = icons[Math.floor(Math.random() * icons.length)];
+                    f.style.left = Math.random() * 100 + 'vw';
+                    f.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    f.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                    container.appendChild(f);
+                }, i * 200);
             }
         }
     </script>
 </body>
 </html>
+
