@@ -3,86 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Batman Sürprizi</title>
+    <title>Sana Özel Bir Mektup 💙 Batman</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap" rel="stylesheet">
     <style>
+        /* Derin Gece Mavisi Arka Plan */
         body { margin: 0; padding: 0; font-family: 'Cormorant Garamond', serif; background-color: #001a33; color: #dbeafe; overflow-x: hidden; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        #login-screen { text-align: center; background: #002d5a; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); z-index: 100; }
-        input { padding: 12px; width: 250px; border: 2px solid #f9d74c; background: #001a33; color: white; border-radius: 10px; margin-bottom: 20px; text-align: center; outline: none; }
-        button { padding: 12px 30px; background: #f9d74c; color: #001a33; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
-        #main-content { display: none; width: 100%; max-width: 1000px; padding: 40px 20px; }
-        .envelope-container { background-color: #fffaf0; color: #333; padding: 50px; border-radius: 10px; border: 2px solid #d4af37; display: flex; flex-direction: column; align-items: center; position: relative; }
-        h1 { font-size: 2.5rem; color: #001a33; text-align: center; }
-        .letter-body { display: flex; gap: 40px; width: 100%; }
-        .text-container { flex: 1; line-height: 1.8; font-size: 1.2rem; text-align: justify; }
-        .side-photos { width: 280px; display: flex; flex-direction: column; gap: 15px; }
-        .side-photo-card { background: white; padding: 5px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); text-align: center; }
-        .side-photo-card img { width: 100%; border-radius: 3px; }
-        .bottom-area { text-align: center; width: 100%; border-top: 1px solid #ccc; margin-top: 20px; padding-top: 20px; }
-        .v-photo { width: 250px; background: white; padding: 5px; border-radius: 5px; margin-bottom: 15px; }
-        .v-photo img { width: 100%; }
-        .gallery-btn { padding: 10px 20px; background: #001a33; color: #f9d74c; border: 1px solid #f9d74c; border-radius: 20px; cursor: pointer; }
-        #gallery-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 200; justify-content: center; align-items: center; }
-        #gallery-modal img { max-width: 90%; max-height: 90%; border: 2px solid #f9d74c; }
-        .flyer { position: fixed; top: -50px; z-index: 1; pointer-events: none; animation: flyDown 7s linear infinite; }
-        @keyframes flyDown { 0% { transform: translateY(0vh); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(105vh); opacity: 0; } }
-        @media (max-width: 768px) { .letter-body { flex-direction: column; } .side-photos { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; } .side-photo-card { width: 45%; } }
+        
+        /* Şifre Ekranı (Düzetildi) */
+        #login-screen { text-align: center; background: #002d5a; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); z-index: 100; position: relative; }
+        #login-screen h2 { color: #f9d74c; margin-top: 0; }
+        input { padding: 12px; width: 250px; border: 2px solid #f9d74c; background: #001a33; color: white; border-radius: 10px; margin-bottom: 20px; text-align: center; font-family: inherit; outline: none; }
+        button { padding: 12px 30px; background: #f9d74c; color: #001a33; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-family: inherit; transition: 0.3s; }
+        button:hover { background: #ffca28; transform: scale(1.05); }
+
+        /* Ana İçerik */
+        #main-content { display: none; opacity: 0; animation: fadeIn 1s forwards; width: 100%; max-width: 1000px; padding: 40px 20px; box-sizing: border-box; }
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* Mektup Kağıdı (Koyu Mavi - Batman Temalı) */
+        .envelope-container { background-color: #002d5a; /* Koyu Lacivert Kağıt */ color: #f9d74c; /* Batman Sarısı Yazı */ padding: 50px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 2px solid #f9d74c; /* Batman Sarısı Çerçeve */ position: relative; display: flex; flex-direction: column; align-items: center; }
+        
+        /* Mektup Başlığı */
+        h1 { font-size: 2.8rem; color: #f9d74c; /* Batman Sarısı */ font-weight: normal; margin-top: 0; margin-bottom: 30px; text-align: center; border-bottom: 2px solid #f9d74c; padding-bottom: 10px; }
+
+        /* Mektup ve Fotoğraf Düzeni (Dolduruldu) */
+        .letter-body { display: flex; gap: 40px; align-items: flex-start; width: 100%; margin-bottom: 40px; flex-wrap: wrap; justify-content: space-around; }
+        
+        /* Metin Alanı */
+        .text-container { flex: 1; min-width: 300px; line-height: 1.8; font-size: 1.3rem; text-indent: 20px; text-align: justify; padding: 10px; }
+        
+        /* Yan taraftaki fotoğraflar */
+        .side-photos { width: 280px; display: flex; flex-direction: column; gap: 20px; }
+        .side-photo-card { background: rgba(0, 0, 0, 0.4); padding: 8px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid rgba(249, 215, 76, 0.3); text-align: center; }
+        .side-photo-card img { width: 100%; border-radius: 8px; height: auto; display: block; }
+        .side-photo-card p { font-size: 1.1rem; font-style: italic; color: #d1d5db; /* Açık gri mektup notu */ margin: 10px 0 0 0; }
+
+        /* Alt Kısım */
+        .bottom-area { text-align: center; width: 100%; border-top: 2px solid #f9d74c; padding-top: 30px; margin-top: 10px; display: flex; flex-direction: column; align-items: center; gap: 15px;}
+        .v-photo { width: 300px; background: rgba(0, 0, 0, 0.4); padding: 8px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 1px solid rgba(249, 215, 76, 0.3); }
+        .v-photo img { width: 100%; border-radius: 8px; }
+        
+        /* Galeri Sekmesi */
+        .gallery-tab { text-align: center; margin-top: 10px; }
+        .gallery-btn { padding: 10px 20px; background: #001a33; color: #f9d74c; border: 2px solid #f9d74c; border-radius: 30px; cursor: pointer; font-family: inherit; font-size: 1.2rem; }
+        #gallery-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 200; justify-content: center; align-items: center; cursor: pointer; }
+        #gallery-modal img { max-width: 90%; max-height: 90%; border-radius: 10px; border: 4px solid #f9d74c; box-shadow: 0 0 30px rgba(249, 215, 76, 0.5); }
+        .close-modal { position: absolute; top: 20px; right: 30px; color: #f9d74c; font-size: 3rem; font-weight: bold; }
+
+        /* Uçuşan Objeler */
+        .flyer { position: fixed; top: -50px; z-index: 1; pointer-events: none; animation: flyDown 8s linear infinite; }
+        @keyframes flyDown { 0% { transform: translateY(0vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(105vh) rotate(360deg); opacity: 0; } }
+
+        /* Mobil Düzen (Yenilendi) */
+        @media (max-width: 800px) {
+            .letter-body { flex-direction: column; gap: 30px; }
+            .side-photos { width: 100%; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+            .side-photo-card { width: 45%; }
+            .v-photo { width: 100%; max-width: 300px; }
+        }
     </style>
 </head>
 <body>
     <div id="flyers-container"></div>
+
     <div id="login-screen">
-        <h2 style="color:#f9d74c">Sana Bir Mektup Var ✨</h2>
-        <input type="text" id="password" placeholder="Şifreyi yaz...">
+        <h2>Sana Özel Bir Mektup... ✨</h2>
+        <input type="text" id="password" placeholder="Şifreyi buraya yaz...">
         <br>
-        <button onclick="checkPassword()">Aç</button>
+        <button onclick="checkPassword()">Mektubu Oku</button>
     </div>
+
     <div id="main-content">
         <div class="envelope-container">
-            <h1>İyi Ki Doğdun Koca Bebeğim!</h1>
+            <h1>İyi Ki Doğdun Koca Bebeğim</h1>
+            
             <div class="letter-body">
-                <div class="text-container">
-                    <p>Bak sevgilim, tam 1 Nisan günü sen dünyaya geldiğinde evren senin için bu tabloyu çizmişti. Seninle geçen her an, benim için o sonsuz evrenin içinde yolumu senin kalbinde bulmak gibi. Geleceğe baktığımda sadece bizi görüyorum; el ele yürüdüğümüz yolları ve Batman gibi her zorluğa karşı birbirimizin kahramanı olduğumuz o güzel günleri... Seni çok seviyorum koca bebeğim!</p>
-                </div>
                 <div class="side-photos">
                     <div class="side-photo-card"><img src="IMG_0279.JPG"><p>Koca bebeğim...</p></div>
                     <div class="side-photo-card"><img src="IMG-20260313-WA0061.jpg"><p>En güzel anımız.</p></div>
+                </div>
+
+                <div class="text-container">
+                    <p>Bak sevgilim, tam 1 Nisan günü sen dünyaya gözlerini açtığında, evren senin için o muazzam tabloyu çoktan çizmişti... O gün gökyüzünde parlayan yıldızlar, yıllar sonra hayatımın en parlak ışığı olacağının habercisi gibiydi. Seninle geçen her an, benim için o sonsuz evrenin içinde kaybolmak ama her seferinde yolumu senin kalbinde bulmak gibi.</p>
+                    <p>Geleceğe baktığımda sadece bizi görüyorum; el ele yürüdüğümüz yolları, birlikte kuracağımız o sıcacık yuvayı ve Batman gibi her zorluğa karşı birbirimizin kahramanı olduğumuz o güzel günleri... Senin gülüşün benim sığınağım, varlığın ise en büyük şükür sebebim. Yıllar geçse de ben hep o ilk günkü heyecanla 'iyi ki benimlesin' diyeceğim.</p>
+                    <p>Yeni yaşında huzurun hiç eksilmediği bir ömür diliyorum. Sen benim bu dünyadaki en kıymetli hazinemsin. İyi ki doğdun, iyi ki varsın ve iyi ki tamamen benimsin. Seni her şeyden çok seviyorum!</p>
+                </div>
+                
+                <div class="side-photos">
                     <div class="side-photo-card"><img src="IMG_1333.JPG"><p>Huzur...</p></div>
+                    <div class="side-photo-card"><img src="IMG_0669 2.JPG"><p>Gülüşün her şeye değer!</p></div>
                 </div>
             </div>
+
             <div class="bottom-area">
-                <div class="v-photo"><img src="IMG_0669 2.JPG"></div>
-                <p style="color:#001a33; font-weight:bold;">Geleceğimiz için, daima... 💙🦇🌷</p>
-                <button class="gallery-btn" onclick="openGallery()">Evreni Gör</button>
+                <p style="color: #f9d74c; font-weight: bold; font-size: 1.4rem;">Geleceğimiz için, daima... 💙🦇🌷</p>
+                
+                <div class="gallery-tab">
+                    <p style="color: #d1d5db;">Doğduğun gün evrenin sana hediyesini görmek ister misin?</p>
+                    <button class="gallery-btn" onclick="openGallery()">Hemen Göster!</button>
+                </div>
             </div>
         </div>
     </div>
+
     <div id="gallery-modal" onclick="closeGallery()">
-        <img src="april-1-2019-eagle-nebula-pillars.jpg">
+        <span class="close-modal">&times;</span>
+        <img src="april-1-2019-eagle-nebula-pillars.jpg" alt="Uzay Şeması">
     </div>
+
     <script>
         function checkPassword() {
-            var p = document.getElementById("password").value.trim().toLowerCase();
-            if (p === "seni çok seviyorum en değerlim") {
+            var pass = document.getElementById("password").value.trim().toLowerCase();
+            if (pass === "seni çok seviyorum en değerlim") {
                 document.getElementById("login-screen").style.display = "none";
                 document.getElementById("main-content").style.display = "block";
                 startFlyers();
-            } else { alert("Yanlış!"); }
+            } else { alert("Şifre yanlış koca bebeğim! Tekrar dener misin? 🦇"); }
         }
-        function openGallery() { document.getElementById("gallery-modal").style.display = "flex"; }
-        function closeGallery() { document.getElementById("gallery-modal").style.display = "none"; }
+        function openGallery() { document.getElementById('gallery-modal').style.display = 'flex'; }
+        function closeGallery() { document.getElementById('gallery-modal').style.display = 'none'; }
         function startFlyers() {
-            const c = document.getElementById("flyers-container");
-            const i = ["🦇", "💙", "🌷", "❤️"];
-            for (let j = 0; j < 40; j++) {
+            const container = document.getElementById('flyers-container');
+            const icons = ['🦇', '💙', '🌷', '❤️'];
+            for (let i = 0; i < 50; i++) {
                 setTimeout(() => {
-                    const f = document.createElement("div");
-                    f.className = "flyer";
-                    f.innerText = i[Math.floor(Math.random() * i.length)];
-                    f.style.left = Math.random() * 100 + "vw";
-                    f.style.fontSize = "25px";
-                    c.appendChild(f);
-                }, j * 200);
+                    const f = document.createElement('div');
+                    f.className = 'flyer';
+                    f.innerText = icons[Math.floor(Math.random() * icons.length)];
+                    f.style.left = Math.random() * 100 + 'vw';
+                    f.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    f.style.animationDuration = (Math.random() * 3 + 6) + 's';
+                    container.appendChild(f);
+                }, i * 180);
             }
         }
     </script>
